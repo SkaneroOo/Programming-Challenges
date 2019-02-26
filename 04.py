@@ -14,7 +14,7 @@ if z==1:
         if temp>=34-rand:
             temp-=35
         e=e+szyfr[temp+rand]
-    print(str(rand)str(e))
+    print(str(rand)+str(e))
 elif z==2:
     b=input('Wprowadź wyraz do odszyfrowania ')
     b=b.lower()
