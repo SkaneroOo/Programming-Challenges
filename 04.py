@@ -4,7 +4,7 @@ print('1. Zaszyfruj')
 print('2. Odszyfruj')
 z=int(input())
 e=''
-rand=randint(1,35)
+rand=randint(1,9)
 if z==1:
     b=input('Wprowadź wyraz do zaszyfrowania ')
     b=b.lower()
@@ -14,6 +14,7 @@ if z==1:
         if temp>=34-rand:
             temp-=35
         e=e+szyfr[temp+rand]
+    print(str(rand)str(e))
 elif z==2:
     b=input('Wprowadź wyraz do odszyfrowania ')
     b=b.lower()
@@ -21,4 +22,4 @@ elif z==2:
     for d in range(1,len(c)):
         temp=szyfr.index(c[d])
         e=e+szyfr[temp-int(c[0])]
-print(str(e))
+    print(str(e))
