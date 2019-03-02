@@ -1,6 +1,7 @@
 from math import *
 from random import randint
 import urllib.request
+import time
 try:
     qhi=[line.strip() for line in open("Data/Questions/hi.txt", 'r')]
     calc=[line.strip() for line in open("Data/Questions/calc.txt", 'r')]
@@ -22,9 +23,14 @@ while True:
     ui=input(">>> ")
     ui=ui.lower()
     if ui in qhi:
-        print (ahi[randint(0,len(ahi)-1)])
+        r=randint(0,len(ahi)-1)
+        print (ahi[r])
     elif ui in calc:
         arg=input('Co mam policzyć >>> ')
         print(eval(arg))
+    elif ui == "do widzenia":
+        print('Do widzenia')
+        time.sleep(3)
+        break
     else:
         print ('Przepraszam, nie rozumiem')
