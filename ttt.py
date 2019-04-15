@@ -1,6 +1,6 @@
-from random import random
-from math import *
+import ai
 board=[' ','1','2','3','4','5','6','7','8','9']
+#sample=['1','2','3','4','5','6','7','8','9']
 player=1
 test=0
 def pb (board):
@@ -46,22 +46,62 @@ def check(board,player):
 		print('Wygrał gracz ' + str(player))
 		return 1
 	else:
-	    return 0
+		return 0
 while True:
-	pb(board)
-	place=int(input('Gdzie chcesz dać pionek >>>'))
-	if str(place) in board:
-		set(board,player,place)
-	test=check(board,player)
-	player+=1
-	if player==3:
-		player=1
-	if test==1:
-	    print('Czy chcesz zagrać ponownie?(T/N)')
-	    b=input('>>>')
-	    b=b.lower()
-	    if b=='t':
-	        test=0
-	        board=[' ','1','2','3','4','5','6','7','8','9']
-	    else:
-	        break
+	print('Wybierz tryb gry')
+	print('1.Singleplayer')
+	print('2.Lokalny Multiplayer')
+	print('3.Wyjdź')
+	inp=input('Wybrany tryb >>>')
+	if inp=='1':
+		player=2
+		pb(board)
+		while True:
+			if player==2:
+				place = int(input('Gdzie chcesz dać pionek >>>'))
+				if str(place) in board:
+					set(board, player, place)
+				test = check(board, player)
+				pb(board)
+				player = 1
+			elif player == 1:
+				place = ai.tttrand(board)
+				if str(place) in board:
+					set(board, player, place)
+				test = check(board, player)
+				pb(board)
+				player = 2
+			if test == 1:
+				print('Wygrał gracz ' + str(player))
+				print('Czy chcesz zagrać ponownie?(T/N)')
+				b = input('>>>')
+				b = b.lower()
+				if b == 't':
+					test = 0
+					board = [' ', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+				else:
+					break
+	elif inp=='2':
+		while True:
+			pb(board)
+			place=int(input('Gdzie chcesz dać pionek >>>'))
+			if str(place) in board:
+				set(board,player,place)
+			test=check(board,player)
+			player+=1
+			if player==3:
+				player=1
+			if test==1:
+				print('Wygrał gracz '+str(player))
+				print('Czy chcesz zagrać ponownie?(T/N)')
+				b=input('>>>')
+				b=b.lower()
+				if b=='t':
+					test=0
+					board=[' ','1','2','3','4','5','6','7','8','9']
+				else:
+					break
+	elif inp=='3':
+		break
+	else:
+		print('Wpisz poprawny numer')
